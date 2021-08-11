@@ -1,5 +1,5 @@
 # Ni_stereoconvergent_coupling
-Requires the 'gen_identifiers', 'gen_rxn_data', and/or 'gen_descriptors' excel files to be in the same folder as the script.
+The 'gen_identifiers', 'gen_rxn_data', and/or 'gen_descriptors' excel files contain information on the kraken ligand library and the ligands employed in this study. These files should be kept in the same folder as the scripts.
 
 gen_linear_regression.ipynb: code for univariate correlations and predictive workflow employing forward stepwise linear regression. Requires 'ForwardStepCandidates_updated.py' and 'loo_q2.py'.
 

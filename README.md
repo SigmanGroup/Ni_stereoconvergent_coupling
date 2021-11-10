@@ -11,4 +11,4 @@ gen_pca_clustering.ipynb: code for the principal component analysis (PCA) dimens
 
 **Citation**
 
-This code is released under the MIT license. Commercial use, Modification, Distribution and Private use are all permitted. The use of this workflow can be acknowledged with the following citation: XX
+This code is released under the MIT license. Commercial use, Modification, Distribution and Private use are all permitted. The use of this workflow can be acknowledged with the following citation: https://pubs.acs.org/articlesonrequest/AOR-4BU5KPI6WVZXCZQIEV98

@@ -13,7 +13,7 @@ gen_pca_clustering.ipynb: code for the principal component analysis (PCA) dimens
 
 This code is released under the MIT license. Commercial use, Modification, Distribution and Private use are all permitted. The use of this workflow can be acknowledged with the following citation: https://pubs.acs.org/articlesonrequest/AOR-4BU5KPI6WVZXCZQIEV98
 
-##Contributors
+## Contributors
 - ForwardStepCandidates_updated: code by Tobias gensch with contributions from Cian Kingston
 - gen_linear_regression: code by Tobias gensch with contributions from Ellyn Peters, Jen Crawford, and Cian Kingston
 - gen_pca_clustering: code by Tobias gensch with contributions from Cian Kingston

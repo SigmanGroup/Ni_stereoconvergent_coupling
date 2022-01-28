@@ -1,5 +1,5 @@
 # code primarily written by Tobias Gensch
-# code is a translation of a MatLab script from Iris Guo
+# code is a translation of a MATLAB script from Iris Guo
 # other contributors: Cian Kingston
 
 # 19-07-17: include all "unique" models at each candidate selection step, as defined by having at most one common parameter with other unique models

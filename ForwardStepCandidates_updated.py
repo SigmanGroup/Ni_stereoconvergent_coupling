@@ -192,3 +192,37 @@ def ForwardStep_py(data,response,n_steps=3,n_candidates=30,reg=LinearRegression(
     print('Done. Time taken (minutes): %0.2f' %((time.time()-start_time)/60))
     return(results,models,scores_q2,sortedmodels,candidates)        
             
+def kennardstonealgorithm(X:np.ndarray, k:int, randomseed:int = 0) -> tuple[list[int], list[int]]:
+    X = np.array( X )
+    originalX = X
+    np.random.seed(randomseed)
+
+    # Find the average value vector of the dataset and calculate the distance of each sample to the average value
+    distancetoaverage = ( (X - np.tile(X.mean(axis=0), (X.shape[0], 1) ) )**2 ).sum(axis=1)
+
+    # Find the sample with the maximum distance to the average value
+    maxdistancesamplenumber = np.where( distancetoaverage == np.max(distancetoaverage) )
+    # maxdistancesamplenumber = maxdistancesamplenumber[0][0] # This line selects the first occurance of the maximum distance with the second index
+    maxdistancesamplenumber = np.random.choice(maxdistancesamplenumber[0]) # This line randomly selects one of the maximum distance samples
+    selectedsamplenumbers = list()
+    selectedsamplenumbers.append(maxdistancesamplenumber)
+
+    # Remove the sample with the maximum distance to the average value from the dataset
+    remainingsamplenumbers = np.arange( 0, X.shape[0], 1)
+    X = np.delete( X, selectedsamplenumbers, 0)
+    remainingsamplenumbers = np.delete( remainingsamplenumbers, selectedsamplenumbers, 0)
+
+    for iteration in range(1, k):
+        selectedsamples = originalX[selectedsamplenumbers,:]
+        mindistancetoselectedsamples = list()
+        for mindistancecalculationnumber in range( 0, X.shape[0]):
+            distancetoselectedsamples = ( (selectedsamples - np.tile(X[mindistancecalculationnumber,:], (selectedsamples.shape[0], 1)) )**2 ).sum(axis=1)
+            mindistancetoselectedsamples.append( np.min(distancetoselectedsamples) )
+        maxdistancesamplenumber = np.where( mindistancetoselectedsamples == np.max(mindistancetoselectedsamples) )
+        # maxdistancesamplenumber = maxdistancesamplenumber[0][0] # This line selects the first occurance of the maximum distance with the second index
+        maxdistancesamplenumber = np.random.choice(maxdistancesamplenumber[0]) # This line randomly selects one of the maximum distance samples
+        selectedsamplenumbers.append(remainingsamplenumbers[maxdistancesamplenumber])
+        X = np.delete( X, maxdistancesamplenumber, 0)
+        remainingsamplenumbers = np.delete( remainingsamplenumbers, maxdistancesamplenumber, 0).tolist()
+
+    return(selectedsamplenumbers, remainingsamplenumbers)
